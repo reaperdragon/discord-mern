@@ -4,3 +4,4 @@ export { default as LoginInputs } from "./LoginInputs";
 export { default as InputField } from "./InputField";
 export { default as LoginFooter } from "./LoginFooter";
 export { default as CustomPrimaryButton } from "./CustomPrimaryButton";
+export { default as RedirectInfo } from "./RedirectInfo";

@@ -1,20 +1,20 @@
 import React from "react";
 import InputField from "./InputField";
 
-const LoginInputs = ({ values, setValues }) => {
+const LoginInputs = ({ email, setEmail, password, setPassword }) => {
   return (
     <>
       <InputField
-        value={values.email}
-        setValue={setValues}
+        value={email}
+        setValue={setEmail}
         label="email"
         type="email"
         placeholder="Enter and Email"
       />
 
       <InputField
-        value={values.password}
-        setValue={setValues}
+        value={password}
+        setValue={setPassword}
         label="password"
         type="password"
         placeholder="Enter Password"
