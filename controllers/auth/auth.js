@@ -1,16 +1,71 @@
+const { StatusCodes } = require("http-status-codes");
+const User = require("../../models/user");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const register = async (req, res) => {
+  const { email, password, username } = req.body;
   try {
-    res.send("Register");
+    //Check User Exists Or Not
+    const isUserExists = await User.exists({
+      email: email.toLowerCase(),
+    });
+
+    if (isUserExists) {
+      return res.status(StatusCodes.CONFLICT).send("Email Already in use.");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+      username,
+      email: email.toLowerCase(),
+      password: hashedPassword,
+    });
+
+    user.password = undefined;
+
+    //JWT
+    const token = jwt.sign(
+      { userId: user._id, userEmail: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_LIFETIME,
+      }
+    );
+
+    res.status(StatusCodes.CREATED).json({ userDetail: { user, token } });
   } catch (error) {
-    res.send(error);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.msg);
   }
 };
 
 const login = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    res.send("Login");
+    const user = await User.findOne({ email: email.toLowerCase() });
+
+    if (!user) {
+      throw new Error("User not Exists!");
+    }
+
+    const dbPassword = user.password;
+    const comparePassword = await bcrypt.compare(password, dbPassword);
+
+    user.password = undefined;
+
+    //JWT
+    const token = jwt.sign(
+      { userId: user._id, userEmail: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_LIFETIME,
+      }
+    );
+
+    res.status(StatusCodes.CREATED).json({ userDetail: { user, token } });
   } catch (error) {
-    res.send(error);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.msg);
   }
 };
 
