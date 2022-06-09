@@ -4,6 +4,7 @@ import { Error, Login, Register } from "./pages";
 import { Dashboard } from "./pages/dashboard";
 
 import "./App.css";
+import { AlertNotification } from "./components";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Dashboard />} />
         </Routes>
+        
       </BrowserRouter>
+      <AlertNotification />
     </>
   );
 }

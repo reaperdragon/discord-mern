@@ -5,9 +5,9 @@ export const validateLoginForm = ({ email, password }) => {
   return isEmailValid && isPasswordValid;
 };
 
-export const validateRegisterForm = ({ mail, password, username }) => {
+export const validateRegisterForm = ({ email, password, username }) => {
   return (
-    validateEmail(mail) &&
+    validateEmail(email) &&
     validatePassword(password) &&
     validateUsername(username)
   );

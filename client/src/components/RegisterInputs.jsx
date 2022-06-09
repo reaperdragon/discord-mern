@@ -1,15 +1,23 @@
-import React from "react";
+import React from 'react'
 import InputField from "./InputField";
 
-const LoginInputs = ({ email, setEmail, password, setPassword }) => {
+const RegisterInputs = ({email,setEmail,username,setUsername,password,setPassword}) => {
   return (
-    <>
+     <>
       <InputField
         value={email}
         setValue={setEmail}
         label="email"
         type="email"
         placeholder="Enter an Email"
+          />
+          
+        <InputField
+        value={username}
+        setValue={setUsername}
+        label="Username"
+        type="username"
+        placeholder="Enter an Username"
       />
 
       <InputField
@@ -20,7 +28,7 @@ const LoginInputs = ({ email, setEmail, password, setPassword }) => {
         placeholder="Enter Password"
       />
     </>
-  );
-};
+  )
+}
 
-export default LoginInputs;
+export default RegisterInputs
