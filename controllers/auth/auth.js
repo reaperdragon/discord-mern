@@ -18,8 +18,8 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      username,
       email: email.toLowerCase(),
+      username,
       password: hashedPassword,
     });
 
@@ -34,9 +34,11 @@ const register = async (req, res) => {
       }
     );
 
-    res.status(StatusCodes.CREATED).json({ userDetail: { user, token } });
+    res
+      .status(StatusCodes.CREATED)
+      .json({ userDetails: { email, username, token } });
   } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.msg);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json("Invalid Credentials Please Try Again Later");
   }
 };
 
@@ -63,9 +65,17 @@ const login = async (req, res) => {
       }
     );
 
-    res.status(StatusCodes.CREATED).json({ userDetail: { user, token } });
+    res.status(StatusCodes.CREATED).json({
+      userDetails: {
+        email: user.email,
+        username: user.username,
+        token,
+      },
+    });
   } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.msg);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json("Invalid Credentials Please Try Again Later");
   }
 };
 

@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { validateLoginForm } from "../utils/validators";
 import { AuthBox, LoginFooter, LoginHeader, LoginInputs } from "../components";
+import { connect } from "react-redux";
+import { getActions } from "../app/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
-
-const Login = () => {
+const Login = ({ login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFormValid(validateLoginForm({ email, password }));
   }, [email, password, setIsFormValid]);
 
   const handleLogin = (e) => {
-    console.log(email, password)
-    console.log("Log In");
+    const userDetails = {
+      email,
+      password,
+    };
+    login(userDetails, navigate);
   };
 
   return (
@@ -30,5 +37,10 @@ const Login = () => {
     </AuthBox>
   );
 };
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch),
+  };
+};
 
-export default Login;
+export default connect(null, mapActionsToProps)(Login);

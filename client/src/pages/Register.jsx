@@ -2,21 +2,26 @@ import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import { validateRegisterForm } from "../utils/validators";
 import { AuthBox, RegisterFooter, RegisterInputs } from "../components";
+import { connect } from "react-redux";
+import { getActions } from "../app/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({register}) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [isFormValid, setIsFormValid] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsFormValid(validateRegisterForm({ email, password, username }));
   }, [email,username, password, setIsFormValid]);
 
   const handleRegister = (e) => {
-    console.log(email, username, password);
-    console.log("Register");
+   const userDetails =  {email, username, password};
+    register(userDetails,navigate)
   };
 
   return (
@@ -40,4 +45,10 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch),
+  };
+};
+
+export default connect(null, mapActionsToProps)(Register);
