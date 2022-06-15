@@ -17,3 +17,6 @@ export { default as FriendsTitle } from "./FriendsTitle";
 export { default as FriendsList } from "./FriendsList";
 export { default as PendingInvitationsList } from "./PendingInvitationsList";
 export { default as AddFriendDialog } from "./AddFriendDialog";
+export { default as FriendsListItem } from "./FriendsListItem";
+export { default as Avatar } from "./Avatar";
+export { default as OnlineIndicator } from "./OnlineIndicator";
