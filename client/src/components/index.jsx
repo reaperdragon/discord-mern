@@ -8,3 +8,7 @@ export { default as RegisterFooter } from "./RegisterFooter";
 export { default as CustomPrimaryButton } from "./CustomPrimaryButton";
 export { default as RedirectInfo } from "./RedirectInfo";
 export { default as AlertNotification } from "./AlertNotification";
+export { default as SideBar } from "./SideBar";
+export { default as FriendsSidebar } from "./FriendsSidebar";
+export { default as Messenger } from "./Messenger";
+export { default as AppBar } from "./AppBar";
