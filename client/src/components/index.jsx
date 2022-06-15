@@ -12,3 +12,7 @@ export { default as SideBar } from "./SideBar";
 export { default as FriendsSidebar } from "./FriendsSidebar";
 export { default as Messenger } from "./Messenger";
 export { default as AppBar } from "./AppBar";
+export { default as MainPageButton } from "./MainPageButton";
+export { default as FriendsTitle } from "./FriendsTitle";
+export { default as FriendsList } from "./FriendsList";
+export { default as PendingInvitationsList } from "./PendingInvitationsList";
