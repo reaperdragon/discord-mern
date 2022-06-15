@@ -13,15 +13,15 @@ export const validateRegisterForm = ({ email, password, username }) => {
   );
 };
 
-const validatePassword = (password) => {
+export const validatePassword = (password) => {
   return password.length > 5 && password.length < 13;
 };
 
-const validateEmail = (mail) => {
+export const validateEmail = (mail) => {
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return emailPattern.test(mail);
 };
 
-const validateUsername = (username) => {
+export const validateUsername = (username) => {
   return username.length > 2 && username.length < 13;
 };

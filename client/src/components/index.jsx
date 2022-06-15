@@ -16,3 +16,4 @@ export { default as MainPageButton } from "./MainPageButton";
 export { default as FriendsTitle } from "./FriendsTitle";
 export { default as FriendsList } from "./FriendsList";
 export { default as PendingInvitationsList } from "./PendingInvitationsList";
+export { default as AddFriendDialog } from "./AddFriendDialog";
