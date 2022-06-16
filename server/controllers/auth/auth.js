@@ -27,18 +27,20 @@ const register = async (req, res) => {
 
     //JWT
     const token = jwt.sign(
-      { userId: user._id, userEmail: user.email },
+      { userId: user._id, email },
       process.env.JWT_SECRET,
       {
         expiresIn: process.env.JWT_LIFETIME,
       }
     );
 
-    res
-      .status(StatusCodes.CREATED)
-      .json({ userDetails: { email, username, token } });
+    res.status(StatusCodes.CREATED).json({
+      userDetails: { email: user.email, username: user.username, token },
+    });
   } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json("Invalid Credentials Please Try Again Later");
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json("Invalid Credentials Please Try Again Later");
   }
 };
 
@@ -58,7 +60,7 @@ const login = async (req, res) => {
 
     //JWT
     const token = jwt.sign(
-      { userId: user._id, userEmail: user.email },
+      { userId: user._id, email },
       process.env.JWT_SECRET,
       {
         expiresIn: process.env.JWT_LIFETIME,

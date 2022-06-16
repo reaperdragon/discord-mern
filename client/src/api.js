@@ -2,7 +2,12 @@ import axios from "axios";
 
 import { logout } from "./utils";
 
-axios.interceptors.request.use(
+const apiClient = axios.create({
+  baseURL: "http://localhost:5002",
+  timeout: 1000,
+});
+
+apiClient.interceptors.request.use(
   (config) => {
     const userDetails = localStorage.getItem("user");
 
@@ -20,7 +25,7 @@ axios.interceptors.request.use(
 
 export const register = async (data) => {
   try {
-    return await axios.post(`/api/v1/auth/register`, data);
+    return await apiClient.post(`/api/v1/auth/register`, data);
   } catch (exception) {
     return {
       error: true,
@@ -31,7 +36,7 @@ export const register = async (data) => {
 
 export const login = async (data) => {
   try {
-    return await axios.post(`/api/v1/auth/login`, data);
+    return await apiClient.post(`/api/v1/auth/login`, data);
   } catch (exception) {
     return {
       error: true,
