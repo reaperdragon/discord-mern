@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const User = require("../../models/user");
 const FriendInvitation = require("../../models/friendInvitation");
+const friendsUpdate = require('../../socketHandlers/updates/friends')
 
 const invite = async (req, res) => {
   const { targetEmailAddress } = req.body;
@@ -54,6 +55,10 @@ const invite = async (req, res) => {
     senderId: userId,
     receiverId: targetUser._id,
   });
+
+  //send pending invitations update to specific user
+
+  friendsUpdate.updateFriendsPendingInvitations(targetUser._id.toString());
 
   return res.status(StatusCodes.CREATED).send("Invitation Has Been Sent!");
 };

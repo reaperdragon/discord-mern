@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Tooltip, Typography, Box } from "@mui/material";
 import Avatar from "./Avatar";
 import InvitationDecisionButtons from "./InvitationDecisionButtons";
+import { connect } from "react-redux";
+import { getActions } from "../app/actions/friendsActions.js";
 
 const PendingInvitationsListItem = ({
   id,
   username,
-  mail,
+  email,
   acceptFriendInvitation = () => {},
   rejectFriendInvitation = () => {},
 }) => {
@@ -23,7 +25,7 @@ const PendingInvitationsListItem = ({
   };
 
   return (
-    <Tooltip title={mail}>
+    <Tooltip title={email}>
       <div style={{ width: "100%" }}>
         <Box
           sx={{
@@ -58,4 +60,13 @@ const PendingInvitationsListItem = ({
   );
 };
 
-export default PendingInvitationsListItem;
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch),
+  };
+};
+
+export default connect(
+  null,
+  mapActionsToProps
+)(PendingInvitationsListItem);

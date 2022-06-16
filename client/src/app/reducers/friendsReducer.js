@@ -2,7 +2,7 @@ import { friendsActions } from "../actions/friendsActions";
 
 const initialState = {
   friends: [],
-  pendingFriendInvitations: [],
+  pendingFriendsInvitations: [],
   onlineUsers: [],
 };
 
@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
     case friendsActions.SET_PENDING_FRIENDS_INVITATIONS:
       return {
         ...state,
-        pendingFriendInvitations: action.pendingFriendInvitations,
+        pendingFriendsInvitations: action.pendingFriendsInvitations,
       };
     case friendsActions.SET_FRIENDS:
       return {
