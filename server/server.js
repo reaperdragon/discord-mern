@@ -13,6 +13,10 @@ const connectDB = require("./db/connection");
 
 //Routes
 const authRoutes = require("./routes/authRoutes");
+const friendInvitationRoutes = require("./routes/friendInvitationRoutes");
+
+//middleware auth
+const auth = require("./middlewares/auth");
 
 //Socket Server
 const socketServer = require("./socketServer");
@@ -26,6 +30,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/friend-invitation", auth, friendInvitationRoutes);
 
 const server = http.createServer(app);
 socketServer.registerSocketServer(server);
