@@ -35,7 +35,12 @@ const register = async (req, res) => {
     );
 
     res.status(StatusCodes.CREATED).json({
-      userDetails: { email: user.email, username: user.username, token },
+      userDetails: {
+        _id: user._id,
+        email: user.email,
+        username: user.username,
+        token,
+      },
     });
   } catch (error) {
     res
@@ -69,6 +74,7 @@ const login = async (req, res) => {
 
     res.status(StatusCodes.CREATED).json({
       userDetails: {
+        _id: user._id,
         email: user.email,
         username: user.username,
         token,

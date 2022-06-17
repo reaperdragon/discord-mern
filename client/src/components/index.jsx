@@ -20,4 +20,6 @@ export { default as AddFriendDialog } from "./AddFriendDialog";
 export { default as FriendsListItem } from "./FriendsListItem";
 export { default as Avatar } from "./Avatar";
 export { default as OnlineIndicator } from "./OnlineIndicator";
-export { default as DropDownMenu } from './DropDownMenu';
+export { default as DropDownMenu } from "./DropDownMenu";
+export { default as ChosenOptionLabel } from "./ChosenOptionLabel";
+export { default as DateSeparator } from "./DateSeparator";
