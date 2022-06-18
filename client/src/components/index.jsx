@@ -23,3 +23,4 @@ export { default as OnlineIndicator } from "./OnlineIndicator";
 export { default as DropDownMenu } from "./DropDownMenu";
 export { default as ChosenOptionLabel } from "./ChosenOptionLabel";
 export { default as DateSeparator } from "./DateSeparator";
+export { default as Room } from "./Room/Room";
