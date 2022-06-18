@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import * as roomHandler from "../socket/roomHandler.js";
 
-const CreateRoomButton = () => {
+const CreateRoomButton = ({ isUserInRoom }) => {
   const createNewRoomHandler = () => {
     //creating new Room and sending info to the server about this
     roomHandler.createNewRoom();
@@ -11,6 +11,7 @@ const CreateRoomButton = () => {
 
   return (
     <Button
+      disabled={isUserInRoom}
       onClick={createNewRoomHandler}
       style={{
         width: "48px",
