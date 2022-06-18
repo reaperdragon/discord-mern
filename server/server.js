@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const mongoSanitize = require('express-mongo-sanitize');
+
 //Database Connection
 const connectDB = require("./db/connection");
 
@@ -26,6 +30,9 @@ const port = process.env.PORT || process.env.API_PORT || 5000;
 const app = express();
 
 app.use(express.json());
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.use(cors());
 

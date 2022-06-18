@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const User = require("../../models/user");
 const FriendInvitation = require("../../models/friendInvitation");
-const friendsUpdate = require('../../socketHandlers/updates/friends')
+const friendsUpdate = require("../../socketHandlers/updates/friends");
 
 const invite = async (req, res) => {
   const { targetEmailAddress } = req.body;

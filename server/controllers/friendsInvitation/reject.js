@@ -15,9 +15,8 @@ const reject = async (req, res) => {
 
     friendsUpdates.updateFriendsPendingInvitations(userId);
 
-    return res.status(StatusCodes.OK).send('Invitation Successfully Rejected!');
+    return res.status(StatusCodes.OK).send("Invitation Successfully Rejected!");
   } catch (error) {
-    console.log(error);
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .send("Something went Wrong Please Try Again.");

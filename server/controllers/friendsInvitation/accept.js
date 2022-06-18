@@ -40,7 +40,6 @@ const accept = async (req, res) => {
 
     return res.status(StatusCodes.OK).send("Friend Successfully Added!");
   } catch (error) {
-    console.log(error);
     return res
       .status(StatusCodes.CONFLICT)
       .send("Something went wrong. Please Try Again");

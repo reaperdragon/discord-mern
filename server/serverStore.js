@@ -15,15 +15,11 @@ const getSocketServerInstance = () => {
 
 const addNewConnectedUser = ({ socketId, userId }) => {
   connectedUsers.set(socketId, { userId });
-  console.log("New Connected Users");
-  console.log(connectedUsers);
 };
 
 const removeConnectedUser = (socketId) => {
   if (connectedUsers.has(socketId)) {
     connectedUsers.delete(socketId);
-    console.log("New Connected Users");
-    console.log(connectedUsers);
   }
 };
 
@@ -67,9 +63,6 @@ const addNewActiveRoom = (userId, socketId) => {
 
   activeRooms = [...activeRooms, newActiveRoom];
 
-  console.log("new active rooms:");
-  console.log(activeRooms);
-
   return newActiveRoom;
 };
 
@@ -100,8 +93,6 @@ const joinActiveRoom = (roomId, newParticipant) => {
   };
 
   activeRooms.push(updatedRoom);
-
-  console.log(activeRooms);
 };
 
 const leaveActiveRoom = (roomId, participantSocketId) => {
