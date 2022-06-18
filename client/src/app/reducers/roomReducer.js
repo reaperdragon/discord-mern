@@ -25,6 +25,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         roomDetails: action.roomDetails,
       };
+    case roomActions.SET_ACTIVE_ROOMS:
+      return {
+        ...state,
+        activeRooms: action.activeRooms,
+      };
     default:
       return state;
   }
