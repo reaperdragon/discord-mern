@@ -10,10 +10,13 @@ const MainContainer = styled("div")({
   flexWrap: "wrap",
 });
 
-const VideosContainer = ({ localStream }) => {
+const VideosContainer = ({ localStream, remoteStreams }) => {
   return (
     <MainContainer>
       <Video stream={localStream} isLocalStream />
+      {remoteStreams.map((stream) => (
+        <Video stream={stream} key={stream.id} />
+      ))}
     </MainContainer>
   );
 };
