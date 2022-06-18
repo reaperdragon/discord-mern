@@ -19,10 +19,7 @@ export const connectWithSocketServer = (userDetails) => {
     },
   });
 
-  socket.on("connect", () => {
-    console.log("successfully connected with socket.io server");
-    console.log(socket.id);
-  });
+  socket.on("connect", () => {});
 
   socket.on("friends-invitations", (data) => {
     const { pendingInvitations } = data;
@@ -40,8 +37,6 @@ export const connectWithSocketServer = (userDetails) => {
   });
 
   socket.on("direct-chat-history", (data) => {
-    console.log("Direct Chat History from server");
-    console.log(data);
     updateDirectChatHistoryIfActive(data);
   });
 
@@ -69,13 +64,11 @@ export const connectWithSocketServer = (userDetails) => {
   });
 
   socket.on("room-participant-left", (data) => {
-    console.log("user left room");
     webRTCHandler.handleParticipantLeftRoom(data);
   });
 };
 
 export const sendDirectMessage = (data) => {
-  console.log(data);
   socket.emit("direct-message", data);
 };
 

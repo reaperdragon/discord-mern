@@ -16,7 +16,6 @@ const PendingInvitationsList = ({ pendingFriendsInvitations }) => {
   return (
     <MainContainer>
       {pendingFriendsInvitations?.map((invitation) => {
-        console.log(invitation);
         return (
           <PendingInvitationsListItem
             key={invitation._id}

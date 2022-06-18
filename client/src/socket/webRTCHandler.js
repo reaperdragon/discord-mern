@@ -9,7 +9,7 @@ const getConfiguration = () => {
   if (turnIceServers) {
     // TODO use TURN server credentials
   } else {
-    console.warn("Using only STUN server");
+    
     return {
       iceServers: [
         {
@@ -72,8 +72,7 @@ export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
   });
 
   peers[connUserSocketId].on("stream", (remoteStream) => {
-    console.log("remote stream came from other user");
-    console.log("direct connection has been established");
+   
     remoteStream.connUserSocketId = connUserSocketId;
     addNewRemoteStream(remoteStream);
   });

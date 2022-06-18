@@ -10,7 +10,7 @@ export const getActions = (dispatch) => {
     login: (userDetails, history) => dispatch(login(userDetails, history)),
     register: (userDetails, history) =>
       dispatch(register(userDetails, history)),
-    setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails))
+    setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
   };
 };
 
@@ -24,12 +24,12 @@ const setUserDetails = (userDetails) => {
 const login = (userDetails, navigate) => {
   return async (dispatch) => {
     const response = await api.login(userDetails);
-    console.log(response);
+
     if (response.error) {
       dispatch(openAlertMessage(response?.exception?.response?.data));
     } else {
       const { userDetails } = response?.data;
-      console.log(userDetails);
+
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));
@@ -41,12 +41,12 @@ const login = (userDetails, navigate) => {
 const register = (userDetails, navigate) => {
   return async (dispatch) => {
     const response = await api.register(userDetails);
-    console.log(response);
+
     if (response.error) {
       dispatch(openAlertMessage(response?.exception?.response?.data));
     } else {
       const { userDetails } = response?.data;
-      console.log(userDetails);
+
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));

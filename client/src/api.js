@@ -3,7 +3,7 @@ import axios from "axios";
 import { logout } from "./utils";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5002",
+  baseURL: process.env.REACT_APP_API,
   timeout: 1000,
 });
 
@@ -69,7 +69,7 @@ export const acceptFriendInvitation = async (data) => {
       exception,
     };
   }
-}
+};
 
 export const rejectFriendInvitation = async (data) => {
   try {
@@ -82,7 +82,6 @@ export const rejectFriendInvitation = async (data) => {
     };
   }
 };
-
 
 const checkResponseCode = (exception) => {
   const responseCode = exception?.response?.status;
