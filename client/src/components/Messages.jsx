@@ -1,4 +1,4 @@
-import React, { useRef, UseEffect } from "react";
+import React from "react";
 import { styled } from "@mui/system";
 import MessagesHeader from "./MessagesHeader";
 import { connect } from "react-redux";
