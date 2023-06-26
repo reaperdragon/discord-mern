@@ -54,11 +54,22 @@ JWT_LIFETIME=TIME
 REACT_APP_API=YOUR_SERVER_URL
 
 ```
+>Navigate to the server directory and run the following command
 
-> Navigate in the directory and run the following command
+```
+node server.js
+```
+Open another terminal
+
+> Navigate in the client directory and run the following command
 
 ```
 npm start
+```
+App will open in the default browser if it doesn't open itself, open it manually by entering following url in your browser
+
+```
+http://localhost:3000
 ```
 
 ### Screenshots
